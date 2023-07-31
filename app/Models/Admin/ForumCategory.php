@@ -33,4 +33,9 @@ class ForumCategory extends Model
     {
         return $this->hasMany(\App\Models\Admin\ForumTopic::class, 'forum_category_id');
     }
+
+    public function posts()
+    {
+        return $this->through('forumTopics')->has('posts');
+    }
 }

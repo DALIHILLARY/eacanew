@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
+            $table->morphs('postable'); // Posts, ForumTopics, Other comments, etc.
+            $table->text('message');
+            $table->boolean('approved')->default(false); // If the comment is approved by the admin for censorship
+            $table->softDeletes();
             $table->timestamps();
         });
     }

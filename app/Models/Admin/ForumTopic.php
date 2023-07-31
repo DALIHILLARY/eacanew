@@ -4,6 +4,8 @@ namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
  use Illuminate\Database\Eloquent\SoftDeletes; use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Post;
+
 class ForumTopic extends Model
 {
      use SoftDeletes;    use HasFactory;    public $table = 'forum_topics';
@@ -32,6 +34,10 @@ class ForumTopic extends Model
         'updated_at' => 'nullable'
     ];
 
+    public function posts()
+    {
+        return $this->morphMany(Post::class, 'postable');
+    }
     public function forumCategory(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(\App\Models\Admin\ForumCategory::class, 'forum_category_id');

@@ -4,7 +4,8 @@
             <thead>
             <tr>
                 <th>Name</th>
-                <th>Description</th>
+                <th>Topics</th>
+                <th>Posts</th>
                 <th colspan="3">Action</th>
             </tr>
             </thead>
@@ -12,7 +13,8 @@
             @foreach($forumCategories as $forumCategory)
                 <tr>
                     <td>{{ $forumCategory->name }}</td>
-                    <td>{{ Str::limit($forumCategory->description,50,'...') }}</td>
+                    <td>{{ $forumCategory->forumTopics()->count() }}</td>
+                    <td>{{ $forumCategory->posts()->count() }}</td>
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['admin.forumCategories.destroy', $forumCategory->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
