@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('case_statuses', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', 100)->unique();
-            $table->text('description', 255)->nullable();
-            $table->softDeletes();
-            $table->timestamps();
+        Schema::table('model_has_permissions', function (Blueprint $table) {
+            $table->foreignId('case_id')->nullable()->constrained('cases');
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('case_statuses');
+        Schema::table('model_has_permissions', function (Blueprint $table) {
+            $table->dropColumn('case_id');
+        });
     }
 };

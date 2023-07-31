@@ -8,6 +8,15 @@ class CaseModel extends Model
 {
      use SoftDeletes;    use HasFactory;    public $table = 'cases';
 
+    public static array $status = [
+        'NEW' => 0,
+        'IN_PROGRESS' => 1,
+        'CLOSED' => 2,
+        'REOPENED' => 3,
+        'RESOLVED' => 4,
+        'REJECTED' => 5,
+    ];
+
     public $fillable = [
         'title',
         'description'

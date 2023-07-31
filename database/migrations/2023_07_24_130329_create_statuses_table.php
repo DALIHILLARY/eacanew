@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('case_timeline', function (Blueprint $table) {
+        Schema::create('statuses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('case_id')->constrained('cases');
-            $table->foreignId('case_status_id')->constrained('case_statuses');
-            $table->foreignId('user_id')->constrained('users');
-            $table->text('comment')->nullable();
+            $table->integer('status');
+            $table->morphs('statusable');
+            $table->foreignId('user_id')->constrained('users'); // The user who created the status
+            $table->text('comment', 255)->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('case_timelines');
+        Schema::dropIfExists('statuses');
     }
 };
