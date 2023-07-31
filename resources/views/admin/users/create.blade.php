@@ -6,7 +6,7 @@
             <div class="row mb-2">
                 <div class="col-sm-12">
                     <h1>
-                    @lang('crud.create') @lang('models/information_requests.singular')
+                    @lang('crud.create') @lang('models/users.singular')
                     </h1>
                 </div>
             </div>
@@ -19,19 +19,19 @@
 
         <div class="card">
 
-            {!! Form::open(['route' => 'admin.informationRequests.store']) !!}
+            {!! Form::open(['route' => 'admin.users.store']) !!}
 
             <div class="card-body">
 
                 <div class="row">
-                    @include('admin.information_requests.fields')
+                    @include('admin.users.fields')
                 </div>
 
             </div>
 
             <div class="card-footer">
                 {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                <a href="{{ route('admin.informationRequests.index') }}" class="btn btn-default"> @lang('crud.cancel') </a>
+                <a href="{{ route('admin.users.index') }}" class="btn btn-default"> @lang('crud.cancel') </a>
             </div>
 
             {!! Form::close() !!}

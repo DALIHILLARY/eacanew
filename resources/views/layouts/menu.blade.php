@@ -59,6 +59,13 @@
 <li class="nav-item">
     <a href="{{ route('admin.informationRequests.index') }}" class="nav-link {{ Request::is('admin.informationRequests*') ? 'active' : '' }}">
         <i class="nav-icon fas fa-home"></i>
-        <p>@lang('models/informationRequests.plural')</p>
+        <p>@lang('models/information_requests.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('admin.users.index') }}" class="nav-link {{ Request::is('admin.users*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-home"></i>
+        <p>@lang('models/users.plural')</p>
     </a>
 </li>

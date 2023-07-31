@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('admin.findings.header')
+    @include('admin.users.header')
 
     <div class="content px-3">
 
@@ -10,7 +10,7 @@
         <div class="clearfix"></div>
 
         <div class="card">
-            @include('admin.findings.table')
+            @include('admin.users.table')
         </div>
     </div>
 

@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'singular' => 'InformationRequest',
-    'plural' => 'InformationRequests',
+    'singular' => 'Information Request',
+    'plural' => 'Information Requests',
     'fields' => [
         'id' => 'Id',
-        'user_id' => 'User Id',
+        'user_id' => 'User',
         'description' => 'Description',
         'reason' => 'Reason',
         'deleted_at' => 'Deleted At',

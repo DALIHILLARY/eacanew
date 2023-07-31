@@ -6,7 +6,7 @@
             <div class="row mb-2">
                 <div class="col-sm-12">
                     <h1>
-                        @lang('crud.edit') @lang('models/informationRequests.singular')
+                        @lang('crud.edit') @lang('models/information_requests.singular')
                     </h1>
                 </div>
             </div>

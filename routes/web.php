@@ -146,3 +146,13 @@ Route::resource('admin/information-requests', App\Http\Controllers\Admin\Informa
         'create' => 'admin.informationRequests.create',
         'edit' => 'admin.informationRequests.edit'
     ]);
+Route::resource('admin/users', App\Http\Controllers\Admin\UserController::class)
+    ->names([
+        'index' => 'admin.users.index',
+        'store' => 'admin.users.store',
+        'show' => 'admin.users.show',
+        'update' => 'admin.users.update',
+        'destroy' => 'admin.users.destroy',
+        'create' => 'admin.users.create',
+        'edit' => 'admin.users.edit'
+    ]);

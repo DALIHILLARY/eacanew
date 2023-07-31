@@ -6,12 +6,12 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1>
-@lang('models/information_requests.singular') @lang('crud.detail')
+@lang('models/users.singular') @lang('crud.detail')
                     </h1>
                 </div>
                 <div class="col-sm-6">
                     <a class="btn btn-default float-right"
-                       href="{{ route('admin.informationRequests.index') }}">
+                       href="{{ route('admin.users.index') }}">
                                                     @lang('crud.back')
                                             </a>
                 </div>
@@ -23,7 +23,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="row">
-                    @include('admin.information_requests.show_fields')
+                    @include('admin.users.show_fields')
                 </div>
             </div>
         </div>

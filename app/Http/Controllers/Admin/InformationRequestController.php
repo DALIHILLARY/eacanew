@@ -42,7 +42,7 @@ class InformationRequestController extends AppBaseController
         /** @var InformationRequest $informationRequest */
         $informationRequest = InformationRequest::create($input);
 
-        Flash::success(__('messages.saved', ['model' => __('models/informationRequests.singular')]));
+        Flash::success(__('messages.saved', ['model' => __('models/information_requests.singular')]));
 
         return redirect(route('admin.informationRequests.index'));
     }
@@ -56,7 +56,7 @@ class InformationRequestController extends AppBaseController
         $informationRequest = InformationRequest::find($id);
 
         if (empty($informationRequest)) {
-            Flash::error(__('models/informationRequests.singular').' '.__('messages.not_found'));
+            Flash::error(__('models/information_requests.singular').' '.__('messages.not_found'));
 
             return redirect(route('admin.informationRequests.index'));
         }
@@ -73,7 +73,7 @@ class InformationRequestController extends AppBaseController
         $informationRequest = InformationRequest::find($id);
 
         if (empty($informationRequest)) {
-            Flash::error(__('models/informationRequests.singular').' '.__('messages.not_found'));
+            Flash::error(__('models/information_requests.singular').' '.__('messages.not_found'));
 
             return redirect(route('admin.informationRequests.index'));
         }
@@ -90,7 +90,7 @@ class InformationRequestController extends AppBaseController
         $informationRequest = InformationRequest::find($id);
 
         if (empty($informationRequest)) {
-            Flash::error(__('models/informationRequests.singular').' '.__('messages.not_found'));
+            Flash::error(__('models/information_requests.singular').' '.__('messages.not_found'));
 
             return redirect(route('admin.informationRequests.index'));
         }
@@ -98,7 +98,7 @@ class InformationRequestController extends AppBaseController
         $informationRequest->fill($request->all());
         $informationRequest->save();
 
-        Flash::success(__('messages.updated', ['model' => __('models/informationRequests.singular')]));
+        Flash::success(__('messages.updated', ['model' => __('models/information_requests.singular')]));
 
         return redirect(route('admin.informationRequests.index'));
     }
@@ -114,14 +114,14 @@ class InformationRequestController extends AppBaseController
         $informationRequest = InformationRequest::find($id);
 
         if (empty($informationRequest)) {
-            Flash::error(__('models/informationRequests.singular').' '.__('messages.not_found'));
+            Flash::error(__('models/information_requests.singular').' '.__('messages.not_found'));
 
             return redirect(route('admin.informationRequests.index'));
         }
 
         $informationRequest->delete();
 
-        Flash::success(__('messages.deleted', ['model' => __('models/informationRequests.singular')]));
+        Flash::success(__('messages.deleted', ['model' => __('models/information_requests.singular')]));
 
         return redirect(route('admin.informationRequests.index'));
     }
