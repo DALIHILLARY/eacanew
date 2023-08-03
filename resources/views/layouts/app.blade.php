@@ -62,5 +62,10 @@
                 reserved.
             </footer>
         </div>
+        @yield('page_modals')
     </body>
+    <script src="{{ asset('assets/adminlte/plugins/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/adminlte/plugins/popper/umd/popper.min.js') }}"></script>
+    @include('components.summernote')
 </x-laravel-ui-adminlte::adminlte-layout>

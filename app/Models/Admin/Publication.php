@@ -12,6 +12,7 @@ class Publication extends Model
     use SoftDeletes;
     use Sluggable;
     use HasFactory;
+    
     public $table = 'publications';
 
     public $fillable = [
