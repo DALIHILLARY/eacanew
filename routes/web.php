@@ -156,3 +156,53 @@ Route::resource('admin/users', App\Http\Controllers\Admin\UserController::class)
         'create' => 'admin.users.create',
         'edit' => 'admin.users.edit'
     ]);
+Route::resource('admin/tags', App\Http\Controllers\Admin\TagController::class)
+    ->names([
+        'index' => 'admin.tags.index',
+        'store' => 'admin.tags.store',
+        'show' => 'admin.tags.show',
+        'update' => 'admin.tags.update',
+        'destroy' => 'admin.tags.destroy',
+        'create' => 'admin.tags.create',
+        'edit' => 'admin.tags.edit'
+    ]);
+Route::resource('admin/news-posts', App\Http\Controllers\Admin\NewsPostController::class)
+    ->names([
+        'index' => 'admin.newsPosts.index',
+        'store' => 'admin.newsPosts.store',
+        'show' => 'admin.newsPosts.show',
+        'update' => 'admin.newsPosts.update',
+        'destroy' => 'admin.newsPosts.destroy',
+        'create' => 'admin.newsPosts.create',
+        'edit' => 'admin.newsPosts.edit'
+    ]);
+Route::resource('admin/events', App\Http\Controllers\Admin\EventController::class)
+    ->names([
+        'index' => 'admin.events.index',
+        'store' => 'admin.events.store',
+        'show' => 'admin.events.show',
+        'update' => 'admin.events.update',
+        'destroy' => 'admin.events.destroy',
+        'create' => 'admin.events.create',
+        'edit' => 'admin.events.edit'
+    ]);
+Route::resource('admin/publications', App\Http\Controllers\Admin\PublicationController::class)
+    ->names([
+        'index' => 'admin.publications.index',
+        'store' => 'admin.publications.store',
+        'show' => 'admin.publications.show',
+        'update' => 'admin.publications.update',
+        'destroy' => 'admin.publications.destroy',
+        'create' => 'admin.publications.create',
+        'edit' => 'admin.publications.edit'
+    ]);
+Route::resource('admin/blog-posts', App\Http\Controllers\Admin\BlogPostController::class)
+    ->names([
+        'index' => 'admin.blogPosts.index',
+        'store' => 'admin.blogPosts.store',
+        'show' => 'admin.blogPosts.show',
+        'update' => 'admin.blogPosts.update',
+        'destroy' => 'admin.blogPosts.destroy',
+        'create' => 'admin.blogPosts.create',
+        'edit' => 'admin.blogPosts.edit'
+    ]);

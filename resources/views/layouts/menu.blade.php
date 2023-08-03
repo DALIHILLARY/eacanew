@@ -69,3 +69,38 @@
         <p>@lang('models/users.plural')</p>
     </a>
 </li>
+
+<li class="nav-item">
+    <a href="{{ route('admin.tags.index') }}" class="nav-link {{ Request::is('admin.tags*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-home"></i>
+        <p>@lang('models/tags.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('admin.newsPosts.index') }}" class="nav-link {{ Request::is('admin.newsPosts*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-home"></i>
+        <p>@lang('models/news_posts.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('admin.events.index') }}" class="nav-link {{ Request::is('admin.events*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-home"></i>
+        <p>@lang('models/events.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('admin.publications.index') }}" class="nav-link {{ Request::is('admin.publications*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-home"></i>
+        <p>@lang('models/publications.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('admin.blogPosts.index') }}" class="nav-link {{ Request::is('admin.blogPosts*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-home"></i>
+        <p>@lang('models/blog_posts.plural')</p>
+    </a>
+</li>
