@@ -3,12 +3,16 @@
 namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
- use Illuminate\Database\Eloquent\SoftDeletes; use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
- class Finding extends Model
+class Finding extends Model
 {
-     use SoftDeletes;    use HasFactory;    public $table = 'findings';
+    use SoftDeletes;
+    use HasFactory;
+    public $table = 'findings';
 
     public $fillable = [
         'title',
@@ -40,9 +44,16 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
         return $this->belongsTo(\App\Models\Admin\Case::class, 'case_id');
     }
 
-    public function current_status() : MorphOne
+    public function current_status(): MorphOne
     {
         return $this->morphOne(Status::class, 'statusable')->latestOfMany();
     }
 
+    /**
+     * Get all of the blogPost's media.
+     */
+    public function media(): MorphMany
+    {
+        return $this->morphMany(Media::class, 'mediable');
+    }
 }

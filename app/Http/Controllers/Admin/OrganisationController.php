@@ -43,6 +43,8 @@ class OrganisationController extends AppBaseController
         /** @var Organisation $organisation */
         $organisation = Organisation::create($input);
 
+        
+
         Flash::success(__('messages.saved', ['model' => __('models/organisations.singular')]));
 
         return redirect(route('admin.organisations.index'));

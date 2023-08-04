@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 
- class Country extends Model
+class Country extends Model
 {
      use SoftDeletes;    use HasFactory;    public $table = 'countries';
 
@@ -37,4 +37,7 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
         return $this->morphOne(Status::class, 'statusable')->latestOfMany();
     }
 
+    public function logo () {
+        return $this->morphOne(Media::class, 'mediable');
+    }
 }

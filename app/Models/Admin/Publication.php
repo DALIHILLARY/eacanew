@@ -7,13 +7,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Publication extends Model
 {
     use SoftDeletes;
     use Sluggable;
     use HasFactory;
-    
+
     public $table = 'publications';
 
     public $fillable = [
@@ -51,9 +52,16 @@ class Publication extends Model
         ];
     }
 
-    public function current_status() : MorphOne
+    public function current_status(): MorphOne
     {
         return $this->morphOne(Status::class, 'statusable')->latestOfMany();
     }
 
+    /**
+     * Get all of the blogPost's media.
+     */
+    public function media(): MorphMany
+    {
+        return $this->morphMany(Media::class, 'mediable');
+    }
 }

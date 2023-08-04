@@ -3,13 +3,16 @@
 namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
- use Illuminate\Database\Eloquent\SoftDeletes; use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class CaseModel extends Model
 {
-     use SoftDeletes;    use HasFactory;    public $table = 'cases';
+    use SoftDeletes;
+    use HasFactory;
+    public $table = 'cases';
 
     public static array $status = [
         'NEW' => 0,
@@ -37,7 +40,7 @@ class CaseModel extends Model
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];
-    
+
     /**
      * Get this case's findings.
      */
@@ -46,12 +49,12 @@ class CaseModel extends Model
         return $this->hasMany(Finding::class, 'case_id');
     }
 
-    public function current_status() : MorphOne
+    public function current_status(): MorphOne
     {
         return $this->morphOne(Status::class, 'statusable')->latestOfMany();
     }
 
-    public function status_timeline() : MorphMany
+    public function status_timeline(): MorphMany
     {
         return $this->morphMany(Status::class, 'statusable');
     }
@@ -64,5 +67,13 @@ class CaseModel extends Model
     public function categories()
     {
         return $this->belongsToMany(\App\Models\Admin\CaseType::class, 'case_category', 'case_id', 'case_type_id');
+    }
+
+    /**
+     * Get all of the blogPost's media.
+     */
+    public function media(): MorphMany
+    {
+        return $this->morphMany(Media::class, 'mediable');
     }
 }

@@ -5,6 +5,7 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Organisation extends Model
 {
@@ -50,5 +51,10 @@ class Organisation extends Model
     public function country(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(\App\Models\Admin\Country::class, 'country_id');
+    }
+
+    public function logo(): MorphOne
+    {
+        return $this->morphOne(Media::class, 'mediable');
     }
 }
