@@ -1,10 +1,7 @@
 <?php
-// Use ls command to shell_exec
-// function
-$output = shell_exec('php composer.phar install');
-  
-// Display the list of all file
-// and directory
+
+putenv("HOME=/home/technolo");
+$output = shell_exec('php composer.phar install 2>&1');
 echo "<pre>$output</pre>";
 
 ?>
