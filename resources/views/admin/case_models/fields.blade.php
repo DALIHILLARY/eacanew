@@ -6,12 +6,12 @@
 
 <div class="form-group col-sm-12">
     {!! Form::label('categories', __('models/case_models.fields.category').':') !!}
-    {!! Form::select('categories', $categories, null, ['class' => 'form-control', 'required', 'maxlength' => 255, 'multiple' =>'multiple']) !!}
+    {!! Form::select('categories[]', $categories, null, ['class' => 'form-control', 'required', 'maxlength' => 255, 'multiple' =>'multiple']) !!}
 </div>
 
 <div class="form-group col-sm-12">
     {!! Form::label('countries', __('models/case_models.fields.country').':') !!}
-    {!! Form::select('countries', $countries, null, ['class' => 'form-control', 'required', 'maxlength' => 255,'multiple' =>'multiple']) !!}
+    {!! Form::select('countries[]', $countries, null, ['class' => 'form-control', 'required', 'maxlength' => 255,'multiple' =>'multiple']) !!}
 </div>
 
 <!-- Description Field -->

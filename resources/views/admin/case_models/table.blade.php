@@ -4,7 +4,8 @@
             <thead>
             <tr>
                 <th>Title</th>
-                <th>Description</th>
+                <th>Category(s)</th>
+                <th>Member State(s)</th>
                 <th colspan="3">Action</th>
             </tr>
             </thead>
@@ -12,7 +13,15 @@
             @foreach($caseModels as $caseModel)
                 <tr>
                     <td>{{ $caseModel->title }}</td>
-                    <td>{{ Str::limit($caseModel->description, 40, '...') }}</td>
+                    <td>
+                        @foreach($caseModel->categories as $category)
+                            <span class="badge badge-info">{{ $category->name }}</span>
+                        @endforeach
+                    </td>
+                    <td>
+                        @foreach($caseModel->countries as $country)
+                            <span class="badge badge-info">{{ $country->name }}</span>
+                        @endforeach
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['admin.caseModels.destroy', $caseModel->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>

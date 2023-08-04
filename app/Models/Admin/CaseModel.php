@@ -4,6 +4,9 @@ namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
  use Illuminate\Database\Eloquent\SoftDeletes; use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
+
 class CaseModel extends Model
 {
      use SoftDeletes;    use HasFactory;    public $table = 'cases';
@@ -46,5 +49,25 @@ class CaseModel extends Model
     public function caseTimelines(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(\App\Models\Admin\CaseTimeline::class, 'case_id');
+    }
+
+    public function current_status() : MorphOne
+    {
+        return $this->morphOne(Status::class, 'statusable')->latestOfMany();
+    }
+
+    public function status_timeline() : MorphMany
+    {
+        return $this->morphMany(Status::class, 'statusable');
+    }
+
+    public function countries()
+    {
+        return $this->belongsToMany(\App\Models\Admin\Country::class, 'case_country', 'case_id', 'country_id');
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(\App\Models\Admin\CaseType::class, 'case_category', 'case_id', 'case_type_id');
     }
 }

@@ -19,7 +19,7 @@ class CaseModelController extends AppBaseController
     public function index(Request $request)
     {
         /** @var CaseModel $caseModels */
-        $caseModels = CaseModel::latest()->paginate(10);
+        $caseModels = CaseModel::latest()->with('countries','categories')->paginate(10);
 
         return view('admin.case_models.index')
             ->with('caseModels', $caseModels);
@@ -43,9 +43,12 @@ class CaseModelController extends AppBaseController
     public function store(CreateCaseModelRequest $request)
     {
         $input = $request->all();
-
         /** @var CaseModel $caseModel */
         $caseModel = CaseModel::create($input);
+
+        $caseModel->countries()->sync($request->input('countries', []));
+
+        $caseModel->categories()->sync($request->input('categories', []));
 
         Flash::success(__('messages.saved', ['model' => __('models/case_models.singular')]));
 
@@ -83,7 +86,10 @@ class CaseModelController extends AppBaseController
             return redirect(route('admin.caseModels.index'));
         }
 
-        return view('admin.case_models.edit')->with('caseModel', $caseModel);
+        $countries = Country::pluck('name', 'id');
+        $categories = CaseType::pluck('name', 'id');
+
+        return view('admin.case_models.edit',compact('caseModel', 'countries', 'categories'));
     }
 
     /**
@@ -101,6 +107,11 @@ class CaseModelController extends AppBaseController
         }
 
         $caseModel->fill($request->all());
+
+        $caseModel->countries()->sync($request->input('countries', []));
+
+        $caseModel->categories()->sync($request->input('categories', []));
+
         $caseModel->save();
 
         Flash::success(__('messages.updated', ['model' => __('models/case_models.singular')]));
