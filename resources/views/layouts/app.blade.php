@@ -1,5 +1,5 @@
-<x-laravel-ui-adminlte::adminlte-layout>
-
+@extends('layouts.base')
+@section('body')
     <body class="hold-transition sidebar-mini layout-fixed">
         <div class="wrapper">
             <!-- Main Header -->
@@ -68,4 +68,4 @@
     <script src="{{ asset('assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/adminlte/plugins/popper/umd/popper.min.js') }}"></script>
     @include('components.summernote')
-</x-laravel-ui-adminlte::adminlte-layout>
+@endsection

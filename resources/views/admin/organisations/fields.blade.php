@@ -4,6 +4,10 @@
     {!! Form::select('country_id',$countries, null, ['class' => 'form-control', 'required']) !!}
 </div>
 
+<div class="form-group col-sm-12">
+    {!! Form::label('logo', __('models/organisations.fields.logo').':') !!}
+    {!! Form::file('logo', ['class' => 'filepond', 'accept' => 'image/*']) !!}
+
 <!-- Name Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('name', __('models/organisations.fields.name').':') !!}

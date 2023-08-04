@@ -1,5 +1,5 @@
-<x-laravel-ui-adminlte::adminlte-layout>
-
+@extends('layouts.base')
+@section('body')
     <body class="hold-transition login-page">
         <div class="login-box">
             <div class="login-logo">
@@ -50,4 +50,4 @@
         </div>
         <!-- /.login-box -->
     </body>
-</x-laravel-ui-adminlte::adminlte-layout>
+@endsection

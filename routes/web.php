@@ -206,3 +206,5 @@ Route::resource('admin/blog-posts', App\Http\Controllers\Admin\BlogPostControlle
         'create' => 'admin.blogPosts.create',
         'edit' => 'admin.blogPosts.edit'
     ]);
+// For file uploads
+Route::post('uploads/process', [App\Http\Controllers\FileUploadController::class, 'process'])->name('uploads.process');

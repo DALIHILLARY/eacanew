@@ -1,5 +1,5 @@
-<x-laravel-ui-adminlte::adminlte-layout>
-
+@extends('layouts.base')
+@section('body')
     <body class="hold-transition register-page">
         <div class="register-box">
             <div class="register-logo">
@@ -87,4 +87,4 @@
         </div>
         <!-- /.register-box -->
     </body>
-</x-laravel-ui-adminlte::adminlte-layout>
+@endsection

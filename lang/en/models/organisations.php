@@ -5,6 +5,7 @@ return [
     'plural' => 'Organisations',
     'fields' => [
         'id' => 'Id',
+        'logo' => 'Logo',
         'name' => 'Name',
         'email' => 'Email',
         'slug' => 'Slug',
