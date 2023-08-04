@@ -46,11 +46,6 @@ class CaseModel extends Model
         return $this->hasMany(Finding::class, 'case_id');
     }
 
-    public function caseTimelines(): \Illuminate\Database\Eloquent\Relations\HasMany
-    {
-        return $this->hasMany(\App\Models\Admin\CaseTimeline::class, 'case_id');
-    }
-
     public function current_status() : MorphOne
     {
         return $this->morphOne(Status::class, 'statusable')->latestOfMany();

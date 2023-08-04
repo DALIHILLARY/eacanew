@@ -5,6 +5,7 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Model;
  use Illuminate\Database\Eloquent\SoftDeletes; use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\Post;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class ForumTopic extends Model
 {
@@ -47,4 +48,9 @@ class ForumTopic extends Model
     {
         return $this->belongsTo(\App\Models\User::class, 'user_id');
     }
+    public function current_status() : MorphOne
+    {
+        return $this->morphOne(Status::class, 'statusable')->latestOfMany();
+    }
+
 }

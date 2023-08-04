@@ -3,10 +3,15 @@
 namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
- use Illuminate\Database\Eloquent\SoftDeletes; use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
+
 class InformationRequest extends Model
 {
-     use SoftDeletes;    use HasFactory;    public $table = 'information_requests';
+    use SoftDeletes;
+    use HasFactory;
+    public $table = 'information_requests';
 
     public static array $status = [
         'NEW' => 0,
@@ -40,5 +45,9 @@ class InformationRequest extends Model
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(\App\Models\Admin\User::class, 'user_id');
+    }
+    public function current_status(): MorphOne
+    {
+        return $this->morphOne(Status::class, 'statusable')->latestOfMany();
     }
 }

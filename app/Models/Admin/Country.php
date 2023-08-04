@@ -4,7 +4,10 @@ namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
  use Illuminate\Database\Eloquent\SoftDeletes; use Illuminate\Database\Eloquent\Factories\HasFactory;
-class Country extends Model
+use Illuminate\Database\Eloquent\Relations\MorphOne;
+
+
+ class Country extends Model
 {
      use SoftDeletes;    use HasFactory;    public $table = 'countries';
 
@@ -29,5 +32,9 @@ class Country extends Model
         'updated_at' => 'nullable'
     ];
 
-    
+    public function current_status() : MorphOne
+    {
+        return $this->morphOne(Status::class, 'statusable')->latestOfMany();
+    }
+
 }

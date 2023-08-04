@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Publication extends Model
 {
@@ -49,4 +50,10 @@ class Publication extends Model
             ]
         ];
     }
+
+    public function current_status() : MorphOne
+    {
+        return $this->morphOne(Status::class, 'statusable')->latestOfMany();
+    }
+
 }

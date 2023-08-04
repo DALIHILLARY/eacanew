@@ -4,7 +4,9 @@ namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
  use Illuminate\Database\Eloquent\SoftDeletes; use Illuminate\Database\Eloquent\Factories\HasFactory;
-class Finding extends Model
+use Illuminate\Database\Eloquent\Relations\MorphOne;
+
+ class Finding extends Model
 {
      use SoftDeletes;    use HasFactory;    public $table = 'findings';
 
@@ -38,4 +40,9 @@ class Finding extends Model
     {
         return $this->belongsTo(\App\Models\Admin\Case::class, 'case_id');
     }
+    public function current_status() : MorphOne
+    {
+        return $this->morphOne(Status::class, 'statusable')->latestOfMany();
+    }
+
 }

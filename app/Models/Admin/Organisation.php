@@ -3,10 +3,14 @@
 namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
- use Illuminate\Database\Eloquent\SoftDeletes; use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 class Organisation extends Model
 {
-     use SoftDeletes;    use HasFactory;    public $table = 'organisations';
+    use SoftDeletes;
+    use HasFactory;
+    public $table = 'organisations';
 
     public $fillable = [
         'name',
