@@ -25,36 +25,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-    Route::get('optimize-clear', function () {
-        Artisan::call('optimize:clear');
-        return Artisan::output();
-    });
-
-    Route::get('migrate', function () {
-        Artisan::call('migrate');
-        return Artisan::output();
-    });
-
-    Route::get('migrate-fresh', function () {
-        Artisan::call('migrate:fresh');
-        return Artisan::output();
-    });
-
-    Route::get('composer-install', function () {
-        $exec = shell_exec('php composer.phar install');
-        return $exec;
-    });
-
-    Route::get('composer-dump-autoload', function () {
-        Artisan::call('composer dump-autoload');
-        return '<h1>composer dump-autoload Artisan command executed</h1>';
-    });
-
-    Route::get('storage-link', function () {
-        Artisan::call('storage:link');
-        return Artisan::output();
-    });
-
     Route::resource('admin/countries', App\Http\Controllers\Admin\CountryController::class)
         ->names([
             'index' => 'admin.countries.index',
@@ -219,3 +189,36 @@ Route::resource('admin/mail-box', App\Http\Controllers\Admin\MailBoxController::
     ]);
 // For file uploads
 Route::post('uploads/process', [App\Http\Controllers\FileUploadController::class, 'process'])->name('uploads.process');
+
+
+// SetUp scripts
+
+Route::get('optimize-clear', function () {
+    Artisan::call('optimize:clear');
+    return Artisan::output();
+});
+
+Route::get('migrate', function () {
+    Artisan::call('migrate');
+    return Artisan::output();
+});
+
+Route::get('migrate-fresh', function () {
+    Artisan::call('migrate:fresh');
+    return Artisan::output();
+});
+
+Route::get('composer-install', function () {
+    $exec = shell_exec('php composer.phar install');
+    return $exec;
+});
+
+Route::get('composer-dump-autoload', function () {
+    Artisan::call('composer dump-autoload');
+    return '<h1>composer dump-autoload Artisan command executed</h1>';
+});
+
+Route::get('storage-link', function () {
+    Artisan::call('storage:link');
+    return Artisan::output();
+});
