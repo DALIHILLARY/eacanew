@@ -16,7 +16,7 @@
                     <td>{{ $finding->title }}</td>
                     {{-- <td>{{ $finding->content }}</td> --}}
                     <td>{{ $finding->user->name }}</td>
-                    <td>{{ $finding->updated_at->format('d/m/Y H:m:i') }}</td>
+                    <td>{{ $finding->updated_at }}</td>
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['admin.findings.destroy', $finding->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>
