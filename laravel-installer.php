@@ -1,4 +1,10 @@
 <?php
-chdir(__DIR__);
-echo system('php composer.phar install');
-// echo "Laravel has been installed successfully!";
+// Use ls command to shell_exec
+// function
+$output = shell_exec('ls');
+  
+// Display the list of all file
+// and directory
+echo "<pre>$output</pre>";
+
+?>
