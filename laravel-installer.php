@@ -1,3 +1,4 @@
 <?php
-  $exec = shell_exec('php composer.phar install');
-  echo $exec;
+chdir(__DIR__);
+system('php composer.phar install');
+echo "Laravel has been installed successfully!";
