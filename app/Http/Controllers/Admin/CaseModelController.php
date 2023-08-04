@@ -6,6 +6,8 @@ use App\Http\Requests\Admin\CreateCaseModelRequest;
 use App\Http\Requests\Admin\UpdateCaseModelRequest;
 use App\Http\Controllers\AppBaseController;
 use App\Models\Admin\CaseModel;
+use App\Models\Admin\CaseType;
+use App\Models\Admin\Country;
 use Illuminate\Http\Request;
 use Flash;
 
@@ -29,7 +31,10 @@ class CaseModelController extends AppBaseController
      */
     public function create()
     {
-        return view('admin.case_models.create');
+        $countries = Country::pluck('name', 'id');
+        $categories = CaseType::pluck('name', 'id');
+
+        return view('admin.case_models.create', compact('countries', 'categories'));
     }
 
     /**

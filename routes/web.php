@@ -22,39 +22,39 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/', function () {
         return redirect()->route('home');
     });
-    
+
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    
+
     Route::get('optimize-clear', function () {
         Artisan::call('optimize:clear');
         return Artisan::output();
     });
-    
+
     Route::get('migrate', function () {
         Artisan::call('migrate');
         return Artisan::output();
     });
-    
+
     Route::get('migrate-fresh', function () {
         Artisan::call('migrate:fresh');
         return Artisan::output();
     });
-    
+
     Route::get('composer-install', function () {
         $exec = shell_exec('composer install');
         return $exec;
     });
-    
+
     Route::get('composer-dump-autoload', function () {
         Artisan::call('composer dump-autoload');
         return '<h1>composer dump-autoload Artisan command executed</h1>';
     });
-    
+
     Route::get('storage-link', function () {
         Artisan::call('storage:link');
         return Artisan::output();
     });
-    
+
     Route::resource('admin/countries', App\Http\Controllers\Admin\CountryController::class)
         ->names([
             'index' => 'admin.countries.index',
@@ -205,6 +205,17 @@ Route::resource('admin/blog-posts', App\Http\Controllers\Admin\BlogPostControlle
         'destroy' => 'admin.blogPosts.destroy',
         'create' => 'admin.blogPosts.create',
         'edit' => 'admin.blogPosts.edit'
+    ]);
+
+Route::resource('admin/mail-box', App\Http\Controllers\Admin\MailBoxController::class)
+    ->names([
+        'index' => 'admin.mailBox.index',
+        'store' => 'admin.mailBox.store',
+        'show' => 'admin.mailBox.show',
+        'update' => 'admin.mailBox.update',
+        'destroy' => 'admin.mailBox.destroy',
+        'create' => 'admin.mailBox.create',
+        'edit' => 'admin.mailBox.edit'
     ]);
 // For file uploads
 Route::post('uploads/process', [App\Http\Controllers\FileUploadController::class, 'process'])->name('uploads.process');

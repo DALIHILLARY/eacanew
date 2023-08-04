@@ -1,6 +1,6 @@
 @extends('layouts.base')
 @section('body')
-    <body class="hold-transition sidebar-mini layout-fixed">
+    <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed">
         <div class="wrapper">
             <!-- Main Header -->
             <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -67,5 +67,8 @@
     <script src="{{ asset('assets/adminlte/plugins/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/adminlte/plugins/popper/umd/popper.min.js') }}"></script>
-    @include('components.summernote')
+
+    <!-- Global Components -->
+    @include('components.summernote') 
+    @include('components.select2', ['placeholder' => '-- Select an option --'])
 @endsection

@@ -55,9 +55,17 @@
 </li>
 
 <li class="nav-item">
+    <a href="{{ route('admin.mailBox.index') }}" class="nav-link {{ Request::is('admin.mail*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-envelope"></i>
+        <p>@lang('models/mail.plural')</p>
+    </a>
+
+</li>
+
+<li class="nav-item">
     <a href="{{ route('admin.findings.index') }}"
         class="nav-link {{ Request::is('admin.findings*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home"></i>
+        <i class="nav-icon fas fa-search"></i>
         <p>@lang('models/findings.plural')</p>
     </a>
 </li>
@@ -65,21 +73,21 @@
 <li class="nav-item">
     <a href="{{ route('admin.informationRequests.index') }}"
         class="nav-link {{ Request::is('admin.informationRequests*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home"></i>
+        <i class="nav-icon fas fa-info"></i>
         <p>@lang('models/information_requests.plural')</p>
     </a>
 </li>
 
 <li class="nav-item">
     <a href="{{ route('admin.users.index') }}" class="nav-link {{ Request::is('admin.users*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home"></i>
+        <i class="nav-icon fas fa-users"></i>
         <p>@lang('models/users.plural')</p>
     </a>
 </li>
 
 <li class="nav-item">
     <a href="{{ route('admin.tags.index') }}" class="nav-link {{ Request::is('admin.tags*') ? 'active' : '' }}">
-        <i class="nav-icon fas fa-home"></i>
+        <i class="nav-icon fas fa-thumbtack"></i>
         <p>@lang('models/tags.plural')</p>
     </a>
 </li>
@@ -98,7 +106,7 @@
         <li class="nav-item">
             <a href="{{ route('admin.newsPosts.index') }}"
                 class="nav-link {{ Request::is('admin.newsPosts*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-home"></i>
+                <i class="nav-icon fas fa-newspaper"></i>
                 <p>@lang('models/news_posts.plural')</p>
             </a>
         </li>
@@ -106,7 +114,7 @@
         <li class="nav-item">
             <a href="{{ route('admin.events.index') }}"
                 class="nav-link {{ Request::is('admin.events*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-home"></i>
+                <i class="nav-icon fas fa-calendar-check"></i>
                 <p>@lang('models/events.plural')</p>
             </a>
         </li>
@@ -114,7 +122,7 @@
         <li class="nav-item">
             <a href="{{ route('admin.publications.index') }}"
                 class="nav-link {{ Request::is('admin.publications*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-home"></i>
+                <i class="nav-icon fas fa-scroll"></i>
                 <p>@lang('models/publications.plural')</p>
             </a>
         </li>
@@ -122,9 +130,12 @@
         <li class="nav-item">
             <a href="{{ route('admin.blogPosts.index') }}"
                 class="nav-link {{ Request::is('admin.blogPosts*') ? 'active' : '' }}">
-                <i class="nav-icon fas fa-home"></i>
+                <i class="nav-icon fas fa-blog"></i>
                 <p>@lang('models/blog_posts.plural')</p>
             </a>
+        </li>
+        <li class="nav-item">
+          
         </li>
     </ul>
 </li>
