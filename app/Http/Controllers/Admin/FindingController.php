@@ -29,7 +29,14 @@ class FindingController extends AppBaseController
      */
     public function create()
     {
-        return view('admin.findings.create');
+        if(!session()->has('current_case_id')){
+            Flash::error(__('messages.not_selected',['model' => __('models/case_models.singular')]));
+            return redirect(route('admin.caseModels.index'));
+        }
+        //Get the case name that is currently selected
+        $case = \App\Models\Admin\CaseModel::find(session()->get('current_case_id'))->title;
+
+        return view('admin.findings.create')->with('case', $case);
     }
 
     /**
@@ -39,12 +46,18 @@ class FindingController extends AppBaseController
     {
         $input = $request->all();
 
+        $case_id = session()->pull('current_case_id');  // Get current case and remove it from the session
+
+        $input['user_id'] = auth()->user()->id; // Use the current user id as the user_id
+        $input['case_id'] = $case_id; // Use the current case id as the case_id
+
+
         /** @var Finding $finding */
         $finding = Finding::create($input);
 
         Flash::success(__('messages.saved', ['model' => __('models/findings.singular')]));
 
-        return redirect(route('admin.findings.index'));
+        return redirect(route('admin.caseModels.show', $case_id.'#case-findings'));
     }
 
     /**

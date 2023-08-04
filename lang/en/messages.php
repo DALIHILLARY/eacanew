@@ -7,5 +7,6 @@ return [
     'updated'   => ':model updated successfully.',
     'deleted'   => ':model deleted successfully.',
     'not_found' => ':model not found',
+    'not_selected' => ':model not selected',
 
 ];

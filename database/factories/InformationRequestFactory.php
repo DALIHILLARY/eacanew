@@ -5,7 +5,7 @@ namespace Database\Factories\Admin;
 use App\Models\Admin\InformationRequest;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-use App\Models\Admin\User;
+use App\Models\User;
 
 class InformationRequestFactory extends Factory
 {

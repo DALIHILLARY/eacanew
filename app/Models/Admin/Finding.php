@@ -25,8 +25,6 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
     public static array $rules = [
         'title' => 'required|string|max:255',
         'content' => 'nullable|string|max:65535',
-        'user_id' => 'required',
-        'case_id' => 'required',
         'deleted_at' => 'nullable',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
@@ -34,12 +32,14 @@ use Illuminate\Database\Eloquent\Relations\MorphOne;
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(\App\Models\Admin\User::class, 'user_id');
+        return $this->belongsTo(\App\Models\User::class, 'user_id');
     }
+
     public function case(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(\App\Models\Admin\Case::class, 'case_id');
     }
+
     public function current_status() : MorphOne
     {
         return $this->morphOne(Status::class, 'statusable')->latestOfMany();

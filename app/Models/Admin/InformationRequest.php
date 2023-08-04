@@ -44,7 +44,7 @@ class InformationRequest extends Model
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(\App\Models\Admin\User::class, 'user_id');
+        return $this->belongsTo(\App\Models\User::class, 'user_id');
     }
     public function current_status(): MorphOne
     {

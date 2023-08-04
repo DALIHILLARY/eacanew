@@ -68,6 +68,8 @@ class CaseModelController extends AppBaseController
 
             return redirect(route('admin.caseModels.index'));
         }
+        // store current case model id in session
+        session(['current_case_id' => $id]);
 
         return view('admin.case_models.show')->with('caseModel', $caseModel);
     }

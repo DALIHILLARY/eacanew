@@ -4,8 +4,9 @@
             <thead>
             <tr>
                 <th>Title</th>
-                <th>Content</th>
-                <th>User Id</th>
+                {{-- <th>Content</th> --}}
+                <th>Contributor</th>
+                <th>Date</th>
                 <th colspan="3">Action</th>
             </tr>
             </thead>
@@ -13,8 +14,9 @@
             @foreach($findings as $finding)
                 <tr>
                     <td>{{ $finding->title }}</td>
-                    <td>{{ $finding->content }}</td>
-                    <td>{{ $finding->user_id }}</td>
+                    {{-- <td>{{ $finding->content }}</td> --}}
+                    <td>{{ $finding->user->name }}</td>
+                    <td>{{ $finding->updated_at->format('d/m/Y H:m:i') }}</td>
                     <td  style="width: 120px">
                         {!! Form::open(['route' => ['admin.findings.destroy', $finding->id], 'method' => 'delete']) !!}
                         <div class='btn-group'>

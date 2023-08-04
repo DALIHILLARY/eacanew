@@ -2,7 +2,7 @@
 
 namespace Database\Factories\Admin;
 
-use App\Models\Admin\User;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 
