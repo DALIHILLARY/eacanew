@@ -52,6 +52,7 @@
             <div class="content-wrapper">
                 @yield('content')
             </div>
+            @livewire('modal')
 
             <!-- Main Footer -->
             <footer class="main-footer">

@@ -26,6 +26,7 @@
                 @include('admin.case_models.show_fields')
             </div>
             <div class="tab-pane fade" id="case-findings" role="tabpanel" aria-labelledby="case-findings-tab">
+                <button class="btn btn-primary" wire:click="$dispatchTo('modal','openModal',path: 'findings.fields')">Open Modal</button>
                 @include('admin.findings.header')
                 @include('admin.findings.table', [
                     'findings' => $caseModel->findings()->paginate(10),

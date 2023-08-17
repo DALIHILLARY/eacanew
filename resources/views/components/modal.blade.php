@@ -1,4 +1,4 @@
-<div class="modal" tabindex="-1" role="dialog" wire:ignore.self>
+<div class="modal {!! $isOpen ? 'fade show d-block':'' !!}" tabindex="-1" role="dialog" wire:ignore.self>
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                @include($formPath)
+                @includeIf($formPath)
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" wire:click="closeModal">Close</button>

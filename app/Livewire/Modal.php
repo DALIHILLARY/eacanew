@@ -15,10 +15,11 @@ class Modal extends Component
         'closeModal' => 'closeModal',
     ];
 
-    public function openModal($formPath)
+    public function openModal(String $path)
     {
+        error_log('modal openx:'. $this->isOpen);
         $this->isOpen = true;
-        $this->formPath = $formPath;
+        $this->formPath = $path;
     }
 
     public function closeModal()
@@ -28,6 +29,7 @@ class Modal extends Component
 
     public function render()
     {
+        error_log('modal open:'. $this->isOpen);
         return view('components.modal');
     }
 }
