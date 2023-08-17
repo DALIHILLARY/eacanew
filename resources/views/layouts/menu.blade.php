@@ -140,3 +140,17 @@
     </ul>
 </li>
 </li>
+
+<li class="nav-item">
+    <a href="{{ route('profiles.index') }}" class="nav-link {{ Request::is('profiles*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-home"></i>
+        <p>@lang('models/profiles.plural')</p>
+    </a>
+</li>
+
+<li class="nav-item">
+    <a href="{{ route('admin.profiles.index') }}" class="nav-link {{ Request::is('admin.profiles*') ? 'active' : '' }}">
+        <i class="nav-icon fas fa-home"></i>
+        <p>@lang('models/profiles.plural')</p>
+    </a>
+</li>

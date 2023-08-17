@@ -44,10 +44,23 @@ FilePond.registerPlugin(
 
 FilePond.create(fileInput).setOptions({
     server: {
-        process: '/uploads/process',
+        process: {
+            url: '/uploads/process',
+            method: 'POST',
+            withCredentials: false,
+            onload: (response) => {
+                //Hack to fix the response from the server
+                // take part of response before the first <link> tag
+                response = response.substring(0, response.indexOf('<link'));
+                // add base url to our relative url
+                console.log(response);
+                return response;
+            }
+        },
+        // process: '/uploads/process',
         revert: '/uploads/revert',
         headers: {
             'X-CSRF-TOKEN': csrfToken,
-        }
+        },
     }
 });

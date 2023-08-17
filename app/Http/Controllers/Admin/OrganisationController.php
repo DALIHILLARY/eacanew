@@ -8,6 +8,7 @@ use App\Http\Controllers\AppBaseController;
 use App\Models\Admin\Organisation;
 use Illuminate\Http\Request;
 use Flash;
+use Illuminate\Support\Facades\Storage;
 
 class OrganisationController extends AppBaseController
 {
@@ -43,7 +44,11 @@ class OrganisationController extends AppBaseController
         /** @var Organisation $organisation */
         $organisation = Organisation::create($input);
 
-        
+        // Move logo from tmp to permanent storage
+        $path = 'media/logos/'.$organisation->id.'.png';
+        Storage::move($request["logo"], $path);
+
+        $organisation->logo()->create(['path' => $path]);
 
         Flash::success(__('messages.saved', ['model' => __('models/organisations.singular')]));
 

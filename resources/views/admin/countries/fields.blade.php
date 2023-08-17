@@ -2,6 +2,7 @@
 <div class="form-group col-sm-12">
     {!! Form::label('code', __('models/countries.fields.code').':') !!}
     {!! Form::text('code', null, ['class' => 'form-control', 'required', 'maxlength' => 5, 'maxlength' => 5]) !!}
+    <small class="form-text text-muted">The country intials.</small>
 </div>
 
 <!-- Name Field -->

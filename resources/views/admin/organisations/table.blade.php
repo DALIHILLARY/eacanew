@@ -3,6 +3,7 @@
         <table class="table" id="organisations-table">
             <thead>
             <tr>
+                <th>Logo</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Phone</th>
@@ -15,6 +16,7 @@
             <tbody>
             @foreach($organisations as $organisation)
                 <tr>
+                    <td><img src="{{ asset($organisation->logo?->path) }}" alt="{{ $organisation->name }}" width="40" height="40"></td>
                     <td>{{ $organisation->name }}</td>
                     <td>{{ $organisation->email }}</td>
                     <td>{{ $organisation->phone }}</td>

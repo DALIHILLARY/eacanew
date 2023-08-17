@@ -80,8 +80,10 @@ class ForumTopicController extends AppBaseController
 
             return redirect(route('admin.forumTopics.index'));
         }
+        $forum_categories = ForumCategory::pluck('name', 'id');
 
-        return view('admin.forum_topics.edit')->with('forumTopic', $forumTopic);
+
+        return view('admin.forum_topics.edit', compact('forumTopic', 'forum_categories'));
     }
 
     /**

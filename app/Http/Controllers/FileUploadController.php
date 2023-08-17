@@ -32,17 +32,23 @@ class FileUploadController extends Controller
         // Store either array or single image
 
         if(is_array($request->input($requestKey))) {
-            return Arr::map($request->file($requestKey), function($file) {
+
+            $paths =  Arr::map($request->file($requestKey), function($file) {
                 return $file->store(
                     path: 'tmp/'.now()->timestamp.'-'.Str::random(20)
                 );
             });
+
+            return $paths;
             
         }else {
             $file = $request->file($requestKey);
-            return $file->store(
+            $path = $file->store(
                 path: 'tmp/'.now()->timestamp.'-'.Str::random(20)
             );
+            error_log($path);
+
+            return $path;
         }
 
     }

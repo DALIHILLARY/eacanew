@@ -116,7 +116,7 @@ Route::resource('admin/information-requests', App\Http\Controllers\Admin\Informa
         'create' => 'admin.informationRequests.create',
         'edit' => 'admin.informationRequests.edit'
     ]);
-Route::resource('admin/users', App\Http\Controllers\UserController::class)
+Route::resource('admin/users', App\Http\Controllers\Admin\UserController::class)
     ->names([
         'index' => 'admin.users.index',
         'store' => 'admin.users.store',
@@ -189,7 +189,9 @@ Route::resource('admin/mail-box', App\Http\Controllers\Admin\MailBoxController::
     ]);
 // For file uploads
 Route::post('uploads/process', [App\Http\Controllers\FileUploadController::class, 'process'])->name('uploads.process');
-
+Route::delete('uploads/revert', function () {
+    return 'delete successful';
+})->name('uploads.revert');
 
 // SetUp scripts
 
@@ -222,3 +224,14 @@ Route::get('storage-link', function () {
     Artisan::call('storage:link');
     return Artisan::output();
 });
+Route::resource('profiles', App\Http\Controllers\ProfileController::class);
+Route::resource('admin/profiles', App\Http\Controllers\Admin\ProfileController::class)
+    ->names([
+        'index' => 'admin.profiles.index',
+        'store' => 'admin.profiles.store',
+        'show' => 'admin.profiles.show',
+        'update' => 'admin.profiles.update',
+        'destroy' => 'admin.profiles.destroy',
+        'create' => 'admin.profiles.create',
+        'edit' => 'admin.profiles.edit'
+    ]);

@@ -3,13 +3,18 @@
 namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
- use Illuminate\Database\Eloquent\SoftDeletes; use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\Post;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class ForumTopic extends Model
 {
-     use SoftDeletes;    use HasFactory;    public $table = 'forum_topics';
+    use SoftDeletes;
+    use HasFactory;
+    public $table = 'forum_topics';
+    use Sluggable;
 
     public $fillable = [
         'forum_category_id',
@@ -35,6 +40,25 @@ class ForumTopic extends Model
         'updated_at' => 'nullable'
     ];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
+
     public function posts()
     {
         return $this->morphMany(Post::class, 'postable');
@@ -48,9 +72,8 @@ class ForumTopic extends Model
     {
         return $this->belongsTo(\App\Models\User::class, 'user_id');
     }
-    public function current_status() : MorphOne
+    public function current_status(): MorphOne
     {
         return $this->morphOne(Status::class, 'statusable')->latestOfMany();
     }
-
 }

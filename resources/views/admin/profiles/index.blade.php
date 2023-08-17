@@ -5,13 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>
-                        @lang('models/case_models.singular') @lang('crud.detail')
-                    </h1>
+                    <h1>@lang('models/profiles.plural')</h1>
                 </div>
                 <div class="col-sm-6">
-                    <a class="btn btn-default float-right" href="{{ route('admin.caseModels.index') }}">
-                        @lang('crud.back')
+                    <a class="btn btn-primary float-right"
+                       href="{{ route('admin.profiles.create') }}">
+                         @lang('crud.add_new')
                     </a>
                 </div>
             </div>
@@ -19,7 +18,14 @@
     </section>
 
     <div class="content px-3">
-        @livewire('show-case', ['caseModel' => $caseModel])
 
+        @include('flash::message')
+
+        <div class="clearfix"></div>
+
+        <div class="card">
+            @include('admin.profiles.table')
+        </div>
     </div>
+
 @endsection

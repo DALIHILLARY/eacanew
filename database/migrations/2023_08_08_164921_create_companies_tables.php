@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('media', function (Blueprint $table) {
+        Schema::create('companies_tables', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->text('path');
-            $table->text('mime')->nullable();
-            $table->morphs('mediable');
-            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -27,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('media');
+        Schema::dropIfExists('companies_tables');
     }
 };
